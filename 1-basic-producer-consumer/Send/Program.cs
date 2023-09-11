@@ -11,24 +11,37 @@ using IConnection connection = connectionFactory.CreateConnection();
 using IModel channel = connection.CreateModel();
 
 channel.QueueDeclare(
-    queue: "hello-world",
+    queue: "counter",
     durable: false,
     exclusive: false,
     autoDelete: false,
     arguments: null);
 
-const string message = "This is the first message.";
+Console.WriteLine("Send messages by pressing [space]. Exit pressing [enter]");
 
-byte[] body = Encoding.UTF8.GetBytes(message);
+int numOfMessages = 0;
+byte[] body;
 
-channel.BasicPublish(
-    exchange: String.Empty,
-    routingKey: "hello-world",
-    basicProperties: null,
-    body: body);
+while (true)
+{
+    ConsoleKeyInfo keyInfo = Console.ReadKey(intercept: true);
 
-Console.WriteLine($" [x] Sent {message}");
+    if (keyInfo.Key == ConsoleKey.Spacebar)
+    {
+        numOfMessages++;
 
-Console.WriteLine(" Press [enter] to exit.");
+        body = Encoding.UTF8.GetBytes(numOfMessages.ToString());
 
-Console.ReadLine();
+        channel.BasicPublish(
+            exchange: String.Empty,
+            routingKey: "counter",
+            basicProperties: null,
+            body: body);
+
+        Console.WriteLine($"Number of messages sent: {numOfMessages}");
+    }
+    else if (keyInfo.Key == ConsoleKey.Enter)
+    {
+        break;
+    }
+}

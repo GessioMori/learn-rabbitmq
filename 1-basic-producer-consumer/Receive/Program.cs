@@ -5,7 +5,6 @@ using System.Text;
 ConnectionFactory connectionFactory = new ConnectionFactory
 {
     HostName = "localhost",
-    Port = 5672,
 };
 
 using IConnection connection = connectionFactory.CreateConnection();
@@ -13,7 +12,7 @@ using IConnection connection = connectionFactory.CreateConnection();
 using IModel channel = connection.CreateModel();
 
 channel.QueueDeclare(
-    queue: "hello-world",
+    queue: "counter",
     durable: false,
     exclusive: false,
     autoDelete: false,
@@ -27,10 +26,17 @@ consumer.Received += (model, ea) =>
 {
     byte[] body = ea.Body.ToArray();
     string message = Encoding.UTF8.GetString(body);
-    Console.WriteLine($" [x] Received {message}");
+    if (!String.IsNullOrEmpty(message) && int.TryParse(message, out int num))
+    {
+        Console.WriteLine($" [x] Received {num} time{(num > 1 ? "s" : "")}.");
+    }
+    else
+    {
+        Console.WriteLine("Strange message received!");
+    }
 };
 
-channel.BasicConsume(queue: "hello-world",
+channel.BasicConsume(queue: "counter",
                      autoAck: true,
                      consumer: consumer);
 
