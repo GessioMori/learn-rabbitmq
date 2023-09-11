@@ -3,7 +3,14 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.7.34024.191
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Send", "Send\Send.csproj", "{34639E07-AB1C-4F87-B578-BA4F5106442F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Send", "Send\Send.csproj", "{34639E07-AB1C-4F87-B578-BA4F5106442F}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Itens de Solução", "Itens de Solução", "{14F76A28-63B4-4F2F-BE4F-F14516EE6388}"
+	ProjectSection(SolutionItems) = preProject
+		.gitignore = .gitignore
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Receive", "Receive\Receive.csproj", "{F3A42BE7-BD70-4D9D-8462-F880519CE49B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +22,10 @@ Global
 		{34639E07-AB1C-4F87-B578-BA4F5106442F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{34639E07-AB1C-4F87-B578-BA4F5106442F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{34639E07-AB1C-4F87-B578-BA4F5106442F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F3A42BE7-BD70-4D9D-8462-F880519CE49B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F3A42BE7-BD70-4D9D-8462-F880519CE49B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F3A42BE7-BD70-4D9D-8462-F880519CE49B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F3A42BE7-BD70-4D9D-8462-F880519CE49B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
